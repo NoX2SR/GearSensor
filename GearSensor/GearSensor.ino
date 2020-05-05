@@ -7,7 +7,7 @@
 #define gearNeutralPin 4
 #define isNeutralHigh 1
 
-#define oilPreasurePin 5
+#define oilPreasurePin A2
 #define oilPreasureLowSignal 1
 
 #define engoneTempSensorPin A0
