@@ -1,0 +1,148 @@
+{
+  "version": 1,
+  "author": "NoX2SR",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-arduino-uno",
+      "id": "uno",
+      "top": 60,
+      "left": 20,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "gearUp",
+      "top": 0,
+      "left": 390,
+      "attrs": { "label": "Gear Up (U)", "key": "U", "color": "green", "bounce": "0" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "gearUpPullup",
+      "top": 45,
+      "left": 330,
+      "rotate": 90,
+      "attrs": { "value": "10000" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "gearDown",
+      "top": 95,
+      "left": 390,
+      "attrs": { "label": "Gear Down (D)", "key": "D", "color": "blue", "bounce": "0" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "gearDownPullup",
+      "top": 140,
+      "left": 330,
+      "rotate": 90,
+      "attrs": { "value": "10000" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "neutral",
+      "top": 190,
+      "left": 390,
+      "attrs": { "label": "Neutral (N)", "key": "N", "color": "yellow", "bounce": "0" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "neutralPulldown",
+      "top": 235,
+      "left": 330,
+      "rotate": 90,
+      "attrs": { "value": "10000" }
+    },
+    {
+      "type": "wokwi-ntc-temperature-sensor",
+      "id": "engineTemp",
+      "top": 310,
+      "left": 365,
+      "attrs": { "temperature": "80", "beta": "3950" }
+    },
+    {
+      "type": "wokwi-ntc-temperature-sensor",
+      "id": "outsideTemp",
+      "top": 310,
+      "left": 510,
+      "attrs": { "temperature": "24", "beta": "3950" }
+    },
+    {
+      "type": "wokwi-slide-switch",
+      "id": "oilPressure",
+      "top": 455,
+      "left": 410,
+      "attrs": { "value": "", "bounce": "0" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "txEnable",
+      "top": 455,
+      "left": 235,
+      "attrs": { "color": "red", "label": "RS-485 TX enable" }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "txLedResistor",
+      "top": 455,
+      "left": 305,
+      "rotate": 90,
+      "attrs": { "value": "330" }
+    },
+    {
+      "type": "wokwi-logic-analyzer",
+      "id": "logic",
+      "top": 35,
+      "left": 700,
+      "attrs": {
+        "channelNames": "UART_RX,UART_TX,DE_RE,GEAR_UP,GEAR_DOWN,NEUTRAL,D6,D7"
+      }
+    }
+  ],
+  "connections": [
+    [ "uno:2", "gearUp:1.l", "green", [] ],
+    [ "gearUp:2.l", "uno:GND.1", "black", [] ],
+    [ "uno:2", "gearUpPullup:1", "green", [] ],
+    [ "gearUpPullup:2", "uno:5V", "red", [] ],
+
+    [ "uno:3", "gearDown:1.l", "blue", [] ],
+    [ "gearDown:2.l", "uno:GND.1", "black", [] ],
+    [ "uno:3", "gearDownPullup:1", "blue", [] ],
+    [ "gearDownPullup:2", "uno:5V", "red", [] ],
+
+    [ "uno:4", "neutral:1.l", "yellow", [] ],
+    [ "neutral:2.l", "uno:5V", "red", [] ],
+    [ "uno:4", "neutralPulldown:1", "yellow", [] ],
+    [ "neutralPulldown:2", "uno:GND.1", "black", [] ],
+
+    [ "engineTemp:OUT", "uno:A0", "orange", [] ],
+    [ "engineTemp:VCC", "uno:5V", "red", [] ],
+    [ "engineTemp:GND", "uno:GND.2", "black", [] ],
+    [ "outsideTemp:OUT", "uno:A1", "purple", [] ],
+    [ "outsideTemp:VCC", "uno:5V", "red", [] ],
+    [ "outsideTemp:GND", "uno:GND.2", "black", [] ],
+
+    [ "oilPressure:2", "uno:A2", "cyan", [] ],
+    [ "oilPressure:1", "uno:GND.2", "black", [] ],
+    [ "oilPressure:3", "uno:5V", "red", [] ],
+
+    [ "uno:8", "txLedResistor:1", "red", [] ],
+    [ "txLedResistor:2", "txEnable:A", "red", [] ],
+    [ "txEnable:C", "uno:GND.3", "black", [] ],
+
+    [ "uno:0", "logic:D0", "green", [] ],
+    [ "uno:1", "logic:D1", "blue", [] ],
+    [ "uno:8", "logic:D2", "red", [] ],
+    [ "uno:2", "logic:D3", "green", [] ],
+    [ "uno:3", "logic:D4", "blue", [] ],
+    [ "uno:4", "logic:D5", "yellow", [] ],
+    [ "logic:GND", "uno:GND.3", "black", [] ]
+  ],
+  "serialMonitor": {
+    "display": "always",
+    "newline": "none",
+    "convertEol": false
+  }
+}

@@ -1,3 +1,4 @@
+#include <Arduino.h>
 #include <GearSensor.h>
 
 #define sensorID 'A'
@@ -28,6 +29,15 @@ int tempOut = 0;
 bool oilPreasureLow = true;
 
 char command = '1';
+
+bool tryGetSensorCommand();
+void executeCommand();
+void ReadSensorsAndRefreshVariables();
+void PrintCurrentGear();
+void PrintEngineTemp();
+void PrintOutTemp();
+void PrintOilPreasure();
+void serialFlush();
 
 void setup()
 {
@@ -181,7 +191,6 @@ void PrintOilPreasure()
 
 void serialFlush(){
   while(Serial.available() > 0) {
-    char t = Serial.read();
+    (void) Serial.read();
   }
 } 
-

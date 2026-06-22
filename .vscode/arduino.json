@@ -1,0 +1,5 @@
+{
+  "board": "arduino:avr:uno",
+  "sketch": "GearSensor/GearSensor.ino",
+  "output": "build/vscode"
+}
