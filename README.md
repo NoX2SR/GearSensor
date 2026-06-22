@@ -99,3 +99,9 @@ The checked-in `.vscode` files select `arduino:avr:uno`, associate `.ino` files 
 - Temperature conversion and sensor calibration are not implemented here.
 - The serial protocol has duplication but no checksum, framing escape, address arbitration, or timeout handling.
 - Motorcycle power, transients, grounding, RS-485 termination, and input protection are outside the firmware and still need explicit hardware design.
+
+## License
+
+This project is source-available under the [PolyForm Noncommercial License 1.0.0](LICENSE). Noncommercial study, experimentation, modification, and sharing are permitted under its terms. Commercial use requires a separate written license from NoX2SR. See [NOTICE](NOTICE).
+
+Third-party components remain under their own licenses.
